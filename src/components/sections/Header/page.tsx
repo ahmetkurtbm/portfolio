@@ -2,14 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { Layout, Menu, Drawer } from 'antd';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Code2, Sparkles, Menu as MenuIcon, X } from 'lucide-react';
 
 const { Header } = Layout;
 
 export default function ModernHeader() {
   const [current, setCurrent] = useState('about');
-  const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);

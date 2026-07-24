@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Card, Tag, Progress } from 'antd';
+import { Progress } from 'antd';
 import { motion } from 'framer-motion';
 import { 
   Code2, 
