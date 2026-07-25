@@ -25,11 +25,30 @@ export default function MainContent() {
   // Projeler verisi
   const projects = [
     {
+      id: 4,
+      title: "ReceiptFlow",
+      description: "Fiş ve fatura görsellerini yükleyip AI ile okuyan, alanları düzenlenebilir hale getiren ve kayıtları tek yerde toplayan modern bir finans asistanı uygulaması.",
+      tags: ["Next.js", "AI", "OCR", "PostgreSQL"],
+      link: "https://receiptflow-ahmetkurt.vercel.app/",
+      github: "https://github.com/ahmetkurtbm/receiptflow",
+      gradient: "linear-gradient(135deg, #f97316 0%, #c2410c 100%)"
+    },
+    {
+      id: 5,
+      title: "GateHub",
+      description: "Birden fazla uygulama için ortak giriş, OAuth istemci yönetimi, consent ekranı ve güvenli oturum akışı sunan merkezi SSO platformu.",
+      tags: ["Next.js", "SSO", "OAuth 2.1", "OpenID Connect"],
+      link: "https://gatehub-ahmetkurt.vercel.app/",
+      github: "https://github.com/ahmetkurtbm/gatehub",
+      gradient: "linear-gradient(135deg, #0f766e 0%, #134e4a 100%)"
+    },
+    {
       id: 1,
       title: "KIDS ACADEMY",
       description: "Bir kurum için geliştirilen etkinlik paylaşımı ve velilerin deneme takibini kolaylaştıran uygulama.",
       tags: ["Next.js", "Node.js", "MongoDB"],
       link: "https://kids-academy-phi.vercel.app/",
+      github: "https://github.com/ahmetkurtbm/kidsacademy",
       gradient: "linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%)"
     },
     {
@@ -47,7 +66,7 @@ export default function MainContent() {
       description: "Araç kiralama için tanıtım sitesi — React ile geliştirilmiş örnek pazarlama/demo sitesi.",
       tags: ["React", "Marketing"],
       link: "https://vercel-carrenting.vercel.app/",
-      github: "https://github.com/ahmetkurtbm/vercel-carrenting.git",
+      github: "https://github.com/ahmetkurtbm/carrenting",
       gradient: "linear-gradient(135deg, #2563eb 0%, #1e40af 100%)"
     },
   ];
@@ -653,17 +672,19 @@ export default function MainContent() {
                         style={{ background: project.gradient, color: 'white' }}
                       >
                         <ExternalLink size={16} />
-                        Demo
+                        Canlı Demo
                       </a>
-                      <a
-                        className="project-link secondary"
-                        href={project.github}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <Github size={16} />
-                        GitHub
-                      </a>
+                      {project.github && (
+                        <a
+                          className="project-link secondary"
+                          href={project.github}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <Github size={16} />
+                          GitHub
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
