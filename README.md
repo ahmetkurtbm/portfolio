@@ -1,6 +1,6 @@
 # Portfolio
 
-Bu proje, Ahmet Kurt'un deneyimlerini, yeteneklerini ve öne çıkan çalışmalarını sergileyen kişisel portfolyo sitesidir. Karanlık tema, animasyonlu bölümler ve proje kartlarıyla çalışmaların kısa ve net şekilde sunulması hedeflenir.
+Bu, kendi kişisel portfolyo sitem. Deneyimlerimi, yeteneklerimi ve üzerinde çalıştığım projeleri tek bir yerde toplamak için hazırladım.
 
 ## Teknoloji Yığını
 
@@ -15,4 +15,4 @@ npm run dev   # http://localhost:3000
 
 ## Projeler
 
-`src/components/sections/Main/page.tsx` içindeki `projects` dizisi, [ahmetkurtbm](https://github.com/ahmetkurtbm) altındaki public repoların canlı Vercel bağlantılarını listeler: ReceiptFlow, GateHub, Kids Academy, Question to Test App, Car Renting, TestMetrix.
+`src/components/sections/Main/page.tsx` içindeki `projects` dizisi, [GitHub profilimde](https://github.com/ahmetkurtbm) yayınladığım public projelerin canlı Vercel bağlantılarını listeler: ReceiptFlow, GateHub, Kids Academy, Question to Test App, Car Renting, TestMetrix.
