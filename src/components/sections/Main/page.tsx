@@ -29,7 +29,7 @@ export default function MainContent() {
       title: "ReceiptFlow",
       description: "Fiş ve fatura görsellerini yükleyip AI ile okuyan, alanları düzenlenebilir hale getiren ve kayıtları tek yerde toplayan modern bir finans asistanı uygulaması.",
       tags: ["Next.js", "AI", "OCR", "PostgreSQL"],
-      link: "https://receiptflow-ahmetkurt.vercel.app/",
+      link: "https://receiptflow-eta.vercel.app/",
       github: "https://github.com/ahmetkurtbm/receiptflow",
       gradient: "linear-gradient(135deg, #f97316 0%, #c2410c 100%)"
     },
@@ -38,15 +38,15 @@ export default function MainContent() {
       title: "GateHub",
       description: "Birden fazla uygulama için ortak giriş, OAuth istemci yönetimi, consent ekranı ve güvenli oturum akışı sunan merkezi SSO platformu.",
       tags: ["Next.js", "SSO", "OAuth 2.1", "OpenID Connect"],
-      link: "https://gatehub-ahmetkurt.vercel.app/",
+      link: "https://gatehub-orcin.vercel.app/",
       github: "https://github.com/ahmetkurtbm/gatehub",
       gradient: "linear-gradient(135deg, #0f766e 0%, #134e4a 100%)"
     },
     {
       id: 1,
       title: "KIDS ACADEMY",
-      description: "Bir kurum için geliştirilen etkinlik paylaşımı ve velilerin deneme takibini kolaylaştıran uygulama.",
-      tags: ["Next.js", "Node.js", "MongoDB"],
+      description: "Bir eğitim kurumu için admin panelinden yönetilen duyuru/etkinlik/sınav sistemi ile velilerin çocuklarının sınav sonuçlarını takip edebildiği veli portalı.",
+      tags: ["Next.js", "Supabase", "PostgreSQL"],
       link: "https://kids-academy-phi.vercel.app/",
       github: "https://github.com/ahmetkurtbm/kidsacademy",
       gradient: "linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%)"
@@ -54,20 +54,29 @@ export default function MainContent() {
     {
       id: 2,
       title: "Question to Test App",
-      description: "Öğretmenlerin sorularını yükleyip karışık test oluşturmasını sağlayan uygulama.",
-      tags: ["React", "Next.js", "Upload"],
-      link: "https://questiontoapp.vercel.app/",
-      github: "https://github.com/ahmetkurtbm/tahsinaslanf",
+      description: "Fotoğraf ve PDF'ten soru bankası oluşturup istenen konu/zorluk karışımında test PDF'i üreten uygulama. Girişler GateHub SSO ile korunur.",
+      tags: ["Next.js", "NextAuth", "PostgreSQL", "Vercel Blob"],
+      link: "https://tahsinaslanf.vercel.app/",
+      github: "https://github.com/ahmetkurtbm/questiontotest",
       gradient: "linear-gradient(135deg, #0ea5a4 0%, #0b8387 100%)"
     },
     {
       id: 3,
       title: "Car Renting",
-      description: "Araç kiralama için tanıtım sitesi — React ile geliştirilmiş örnek pazarlama/demo sitesi.",
-      tags: ["React", "Marketing"],
+      description: "5 dilde çok dilli araç kiralama sitesi. Veritabanı destekli filo, rezervasyon sistemi ve GateHub ile korunan yönetim paneli içerir.",
+      tags: ["Next.js", "Supabase", "i18n"],
       link: "https://vercel-carrenting.vercel.app/",
       github: "https://github.com/ahmetkurtbm/carrenting",
       gradient: "linear-gradient(135deg, #2563eb 0%, #1e40af 100%)"
+    },
+    {
+      id: 6,
+      title: "TestMetrix",
+      description: "TÜBİTAK proje ve soru bankalarını klasörler halinde organize eden, Excel ile toplu veri aktarımı yapan ve sonuçları grafik/PDF raporlarına dönüştüren uygulama.",
+      tags: ["Next.js", "Prisma", "PostgreSQL", "Excel"],
+      link: "https://tubitak-lake.vercel.app/",
+      github: "https://github.com/ahmetkurtbm/testmetrix",
+      gradient: "linear-gradient(135deg, #db2777 0%, #831843 100%)"
     },
   ];
 
