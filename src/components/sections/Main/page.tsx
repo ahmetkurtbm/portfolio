@@ -78,6 +78,15 @@ export default function MainContent() {
       github: "https://github.com/ahmetkurtbm/testmetrix",
       gradient: "linear-gradient(135deg, #db2777 0%, #831843 100%)"
     },
+    {
+      id: 7,
+      title: "GastroFlow",
+      description: "Çok kiracılı, rol bazlı bir restoran yönetim sistemi: offline-first sipariş alma, mutfak ekranı, reçeteye dayalı stok düşümü, satın alma ve patron mobil paneli. Güvenlik veritabanı seviyesinde Row Level Security ile zorunlu kılınıyor.",
+      tags: ["Next.js", "Supabase", "PostgreSQL", "RLS", "PWA"],
+      link: null,
+      github: "https://github.com/ahmetkurtbm/gastroflow",
+      gradient: "linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%)"
+    },
   ];
 
   // Yetenekler verisi
@@ -673,16 +682,18 @@ export default function MainContent() {
                     </div>
 
                     <div className="project-links">
-                      <a
-                        className="project-link primary"
-                        href={project.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        style={{ background: project.gradient, color: 'white' }}
-                      >
-                        <ExternalLink size={16} />
-                        Canlı Demo
-                      </a>
+                      {project.link && (
+                        <a
+                          className="project-link primary"
+                          href={project.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{ background: project.gradient, color: 'white' }}
+                        >
+                          <ExternalLink size={16} />
+                          Canlı Demo
+                        </a>
+                      )}
                       {project.github && (
                         <a
                           className="project-link secondary"
