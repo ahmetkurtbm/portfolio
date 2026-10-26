@@ -81,11 +81,20 @@ export default function MainContent() {
     {
       id: 7,
       title: "GastroFlow",
-      description: "Çok kiracılı, rol bazlı bir restoran yönetim sistemi: offline-first sipariş alma, mutfak ekranı, reçeteye dayalı stok düşümü, satın alma ve patron mobil paneli. Güvenlik veritabanı seviyesinde Row Level Security ile zorunlu kılınıyor.",
+      description: "Çok kiracılı, rol bazlı bir restoran yönetim sistemi: QR menüden sipariş, offline dayanıklı POS, mutfak ekranı, reçeteye dayalı stok düşümü, satın alma ve patron mobil paneli. Erişim kontrolü veritabanında Row Level Security ile zorunlu; ÖKC, e-Arşiv ve paket platformu entegrasyonları şimdilik mock.",
       tags: ["Next.js", "Supabase", "PostgreSQL", "RLS", "PWA"],
       link: null,
       github: "https://github.com/ahmetkurtbm/gastroflow",
       gradient: "linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%)"
+    },
+    {
+      id: 8,
+      title: "Diyetgo",
+      description: "Diyetisyenler için danışan, ölçüm, besin, beslenme planı, randevu ve hedef yönetimi. Canlı demo tarayıcıda çalışır; yerelde Express + PostgreSQL API ve diyetisyen hesaplarıyla aynı arayüz kullanılır.",
+      tags: ["React", "TypeScript", "Express", "PostgreSQL", "PWA"],
+      link: "https://diyetgo-kappa.vercel.app/",
+      github: "https://github.com/ahmetkurtbm/diyetgo",
+      gradient: "linear-gradient(135deg, #16a34a 0%, #14532d 100%)"
     },
   ];
 

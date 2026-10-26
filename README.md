@@ -15,4 +15,4 @@ npm run dev   # http://localhost:3000
 
 ## Projeler
 
-`src/components/sections/Main/page.tsx` içindeki `projects` dizisi, [GitHub profilimde](https://github.com/ahmetkurtbm) yayınladığım public projelerin canlı Vercel bağlantılarını listeler: ReceiptFlow, GateHub, Kids Academy, Question to Test App, Car Renting, TestMetrix.
+`src/components/sections/Main/page.tsx` içindeki `projects` dizisi, [GitHub profilimde](https://github.com/ahmetkurtbm) yayınladığım public projelerin canlı Vercel bağlantılarını listeler: ReceiptFlow, GateHub, Kids Academy, Question to Test App, Car Renting, TestMetrix, GastroFlow, Diyetgo.
