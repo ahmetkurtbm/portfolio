@@ -72,9 +72,9 @@ export default function MainContent() {
     {
       id: 6,
       title: "TestMetrix",
-      description: "TÜBİTAK proje ve soru bankalarını klasörler halinde organize eden, Excel ile toplu veri aktarımı yapan ve sonuçları grafik/PDF raporlarına dönüştüren uygulama.",
+      description: "Öğretmenler için sınav madde analizi: Excel'den yüklenen cevaplarla madde güçlüğü, ayırt edicilik, KR-20/KR-21 güvenirlik, çeldirici analizi ve öğrenci puanlarını hesaplayıp Excel ve PDF raporları üretir.",
       tags: ["Next.js", "Prisma", "PostgreSQL", "Excel"],
-      link: "https://tubitak-lake.vercel.app/",
+      link: "https://testmetrix.vercel.app/",
       github: "https://github.com/ahmetkurtbm/testmetrix",
       gradient: "linear-gradient(135deg, #db2777 0%, #831843 100%)"
     },
@@ -99,8 +99,6 @@ export default function MainContent() {
   ];
 
   // Yetenekler verisi
-  // Updated skill list: distinct colors per skill + added .NET and Proxmox
-  // Assumptions: user requested .NET at 40; Proxmox added at 50 (adjustable on request)
   const skills = [
     { name: "React / Next.js", level: 90, icon: <Layout size={20} />, color: "#61dafb" },
     { name: "TypeScript", level: 90, icon: <Code2 size={20} />, color: "#3178c6" },
