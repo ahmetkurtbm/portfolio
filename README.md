@@ -4,7 +4,7 @@ Bu, kendi kişisel portfolyo sitem. Deneyimlerimi, yeteneklerimi ve üzerinde ç
 
 ## Teknoloji Yığını
 
-Next.js (App Router) · React · TypeScript · Tailwind CSS · Ant Design · Framer Motion · Three.js
+Next.js (App Router) · React · TypeScript · Tailwind CSS v4 · Lucide
 
 ## Kurulum
 
@@ -15,4 +15,4 @@ npm run dev   # http://localhost:3000
 
 ## Projeler
 
-`src/components/sections/Main/page.tsx` içindeki `projects` dizisi, [GitHub profilimde](https://github.com/ahmetkurtbm) yayınladığım public projelerin canlı Vercel bağlantılarını listeler: ReceiptFlow, GateHub, Kids Academy, Question to Test App, Car Renting, TestMetrix, GastroFlow, Diyetgo.
+Site içeriği (profil, projeler, deneyim, yetenekler) tek dosyada: `src/content/site.ts`. Projeler [GitHub profilimdeki](https://github.com/ahmetkurtbm) public depolar ve canlı demolarıdır: GastroFlow, TestMetrix, ReceiptFlow, GateHub, Diyetgo, Question to Test, Kids Academy.

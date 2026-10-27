@@ -1,68 +1,60 @@
-import { AntdRegistry } from '@ant-design/nextjs-registry';
-import { ConfigProvider } from 'antd';
-import { Inter, Poppins, JetBrains_Mono } from 'next/font/google';
-import './globals.css';
+import type { Metadata, Viewport } from "next";
+import { IBM_Plex_Sans, JetBrains_Mono } from "next/font/google";
 
-const inter = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
+import { profile } from "@/content/site";
 
-const poppins = Poppins({ 
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
-  variable: '--font-poppins',
-  display: 'swap',
+import "./globals.css";
+
+const plexSans = IBM_Plex_Sans({
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-plex-sans",
+  display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-jetbrains-mono',
-  display: 'swap',
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const title = `${profile.name} · ${profile.role}`;
+const description =
+  "Next.js, TypeScript ve PostgreSQL ile uçtan uca web uygulamaları geliştiren full-stack developer. Projeler, deneyim ve iletişim.";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://ahmetkurt.vercel.app"),
+  title,
+  description,
+  authors: [{ name: profile.name, url: profile.github }],
+  openGraph: {
+    type: "website",
+    locale: "tr_TR",
+    url: "/",
+    title,
+    description,
+    siteName: profile.name,
+  },
+  twitter: { card: "summary_large_image", title, description },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0b1120",
+  colorScheme: "dark",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="tr" className={`${inter.variable} ${poppins.variable} ${jetbrainsMono.variable}`}>
-      <body className="font-inter">
-        <AntdRegistry>
-          <ConfigProvider
-            theme={{
-              token: {
-                colorPrimary: '#8b5cf6', // Purple primary
-                colorInfo: '#3b82f6', // Blue info
-                colorSuccess: '#10b981', // Green success
-                colorWarning: '#f59e0b', // Yellow warning
-                colorError: '#ef4444', // Red error
-                borderRadius: 12,
-                fontFamily: 'var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                fontSize: 16,
-                colorBgBase: '#0f172a', // Dark background
-                colorTextBase: '#f8fafc', // Light text
-              },
-              components: {
-                Button: {
-                  fontWeight: 600,
-                  borderRadius: 12,
-                },
-                Typography: {
-                  fontFamilyCode: 'var(--font-jetbrains-mono), "Fira Code", Consolas, monospace',
-                },
-                Menu: {
-                  colorBgBase: 'transparent',
-                  colorBgContainer: 'transparent',
-                },
-              },
-            }}
-          >
-            {children}
-          </ConfigProvider>
-        </AntdRegistry>
+    <html lang="tr" className={`${plexSans.variable} ${jetbrainsMono.variable}`}>
+      <body className="min-h-dvh">
+        <a
+          href="#icerik"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-on-accent"
+        >
+          İçeriğe geç
+        </a>
+        {children}
       </body>
     </html>
   );
