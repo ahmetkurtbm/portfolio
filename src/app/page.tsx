@@ -1,264 +1,213 @@
-import { ArrowRight, ArrowUpRight, Download, Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight, Github, Linkedin, Mail, Phone } from "lucide-react";
 
+import { AsciiDonut } from "@/components/ascii-donut";
 import { SiteHeader } from "@/components/site-header";
 import { education, experience, profile, projects, skills, type Project } from "@/content/site";
 
-function SectionHeading({ index, title, id }: { index: string; title: string; id: string }) {
+function Kicker({ children }: { children: React.ReactNode }) {
+  return <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">{children}</span>;
+}
+
+function SectionHead({ id, kicker, title }: { id: string; kicker: string; title: string }) {
   return (
-    <div className="mb-10 flex items-baseline gap-4">
-      <span className="font-mono text-sm text-accent">{index}</span>
-      <h2 id={id} className="text-2xl font-semibold tracking-tight text-fg sm:text-3xl">
+    <div className="mb-12 flex flex-col gap-3">
+      <Kicker>{kicker}</Kicker>
+      <h2 id={id} className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
         {title}
       </h2>
-      <span aria-hidden="true" className="h-px flex-1 bg-line" />
     </div>
   );
 }
 
+/** Sade proje kartı: küçük ekran görüntüsü, tek cümle, etiketler ve iki bağlantı. */
 function ProjectCard({ project, index }: { project: Project; index: number }) {
-  // İlk proje öne çıkan proje olarak iki sütuna yayılır; yedi kartlık ızgara böylece boşluksuz kapanır.
   return (
-    <article className={`group flex flex-col rounded-xl ${index === 0 ? "md:col-span-2" : ""} border border-line bg-surface p-6 transition-colors duration-200 hover:border-line-strong hover:bg-surface-hover`}>
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <p className="font-mono text-xs text-fg-muted">
-            {String(index + 1).padStart(2, "0")} · {project.category}
-          </p>
-          <h3 className="mt-2 text-xl font-semibold tracking-tight text-fg">{project.title}</h3>
+    <article className="project group flex flex-col gap-4 rounded-2xl border border-line bg-surface p-4 transition-colors hover:border-ink-faint/60">
+      <a href={project.demo ?? project.source} target="_blank" rel="noreferrer" className="shot" aria-label={`${project.title} demosunu aç`}>
+        <Image src={project.image} alt={`${project.title} ekran görüntüsü`} width={1440} height={900} sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw" />
+      </a>
+      <div className="flex flex-1 flex-col gap-2 px-1">
+        <div className="flex items-baseline justify-between gap-3">
+          <h3 className="font-display text-xl font-semibold tracking-tight">{project.title}</h3>
+          <span className="font-mono text-xs text-ink-faint">{String(index + 1).padStart(2, "0")}</span>
         </div>
-      </div>
-
-      <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-fg-muted">{project.description}</p>
-
-      <ul className="mt-5 flex flex-wrap gap-2" aria-label="Kullanılan teknolojiler">
-        {project.tags.map((tag) => (
-          <li
-            key={tag}
-            className="rounded-md border border-line px-2 py-1 font-mono text-xs text-fg-muted"
-          >
-            {tag}
-          </li>
-        ))}
-      </ul>
-
-      <div className="mt-auto flex flex-wrap gap-x-5 gap-y-2 pt-6 text-sm font-medium">
-        {project.demo ? (
-          <a
-            href={project.demo}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex min-h-11 items-center gap-1.5 text-accent transition-colors hover:text-accent-strong"
-          >
-            Canlı demo
-            <ArrowUpRight size={16} aria-hidden="true" />
-            <span className="sr-only">({project.title}, yeni sekmede açılır)</span>
-          </a>
-        ) : null}
-        <a
-          href={project.source}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex min-h-11 items-center gap-1.5 text-fg-muted transition-colors hover:text-fg"
-        >
-          <Github size={16} aria-hidden="true" />
-          Kaynak kod
-          <span className="sr-only">({project.title}, yeni sekmede açılır)</span>
-        </a>
+        <p className="text-sm text-ink-faint">
+          {project.category}
+          {project.badge && <span className="text-mint"> · {project.badge}</span>}
+        </p>
+        <p className="text-sm leading-relaxed text-ink-soft">{project.problem}</p>
+        <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-3">
+          <span className="font-mono text-xs text-ink-faint">{project.tags.slice(0, 3).join(" · ")}</span>
+          <span className="flex gap-4 text-sm">
+            {project.demo && (
+              <a href={project.demo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-0.5 text-accent hover:underline">
+                Demo <ArrowUpRight size={14} aria-hidden />
+              </a>
+            )}
+            <a href={project.source} target="_blank" rel="noreferrer" className="inline-flex items-center gap-0.5 text-ink-soft hover:text-ink">
+              Kod <ArrowUpRight size={14} aria-hidden />
+            </a>
+          </span>
+        </div>
       </div>
     </article>
   );
 }
 
 export default function Home() {
-  const year = new Date().getFullYear();
-
   return (
     <>
-      <SiteHeader name={profile.name} cv={profile.cv} />
-
-      <main id="icerik" className="mx-auto max-w-5xl px-4 sm:px-6">
-        <section aria-labelledby="hero-baslik" className="pb-24 pt-20 sm:pt-28">
-          <p className="rise font-mono text-sm text-accent">
-            {profile.role} · {profile.location}
-          </p>
-          <h1
-            id="hero-baslik"
-            className="rise mt-4 text-4xl font-semibold tracking-tight text-fg [animation-delay:60ms] sm:text-6xl"
-          >
-            {profile.name}
-          </h1>
-          <p className="rise mt-6 max-w-2xl text-lg leading-relaxed text-fg-muted [animation-delay:120ms]">
-            {profile.summary}
-          </p>
-
-          <div className="rise mt-10 flex flex-wrap items-center gap-3 [animation-delay:180ms]">
-            <a
-              href="#projeler"
-              className="inline-flex h-11 items-center gap-2 rounded-md bg-accent px-5 text-sm font-semibold text-on-accent transition-colors duration-200 hover:bg-accent-strong"
-            >
-              Projeleri incele
-              <ArrowRight size={16} aria-hidden="true" />
-            </a>
-            <a
-              href={profile.cv}
-              download
-              className="inline-flex h-11 items-center gap-2 rounded-md border border-line-strong px-5 text-sm font-medium text-fg transition-colors duration-200 hover:border-fg-muted"
-            >
-              <Download size={16} aria-hidden="true" />
-              CV indir
-            </a>
-            <div className="ml-1 flex items-center gap-1">
-              <a
-                href={profile.github}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub profili"
-                className="inline-flex h-11 w-11 items-center justify-center rounded-md text-fg-muted transition-colors hover:text-fg"
-              >
-                <Github size={20} aria-hidden="true" />
-              </a>
-              <a
-                href={profile.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn profili"
-                className="inline-flex h-11 w-11 items-center justify-center rounded-md text-fg-muted transition-colors hover:text-fg"
-              >
-                <Linkedin size={20} aria-hidden="true" />
-              </a>
-              <a
-                href={`mailto:${profile.email}`}
-                aria-label="E-posta gönder"
-                className="inline-flex h-11 w-11 items-center justify-center rounded-md text-fg-muted transition-colors hover:text-fg"
-              >
-                <Mail size={20} aria-hidden="true" />
-              </a>
-            </div>
+      <SiteHeader />
+      <main id="icerik">
+        <section id="top" className="relative isolate overflow-hidden">
+          <div className="absolute inset-0 -z-10 flex items-center justify-center lg:pl-[46%]">
+            <AsciiDonut />
           </div>
-
-          <dl className="rise mt-16 grid max-w-2xl grid-cols-3 gap-6 border-t border-line pt-8 [animation-delay:240ms]">
-            <div>
-              <dt className="text-sm text-fg-muted">Profesyonel deneyim</dt>
-              <dd className="mt-1 text-2xl font-semibold text-fg">1+ yıl</dd>
-            </div>
-            <div>
-              <dt className="text-sm text-fg-muted">Açık kaynak proje</dt>
-              <dd className="mt-1 text-2xl font-semibold text-fg">{projects.length}</dd>
-            </div>
-            <div>
-              <dt className="text-sm text-fg-muted">Ana yığın</dt>
-              <dd className="mt-1 text-2xl font-semibold text-fg">React · Next.js</dd>
-            </div>
-          </dl>
-        </section>
-
-        <section id="projeler" aria-labelledby="projeler-baslik" className="scroll-mt-20 py-16">
-          <SectionHeading index="01" title="Projeler" id="projeler-baslik" />
-          <div className="grid gap-5 md:grid-cols-2">
-            {projects.map((project, index) => (
-              <ProjectCard key={project.title} project={project} index={index} />
-            ))}
-          </div>
-        </section>
-
-        <section id="deneyim" aria-labelledby="deneyim-baslik" className="scroll-mt-20 py-16">
-          <SectionHeading index="02" title="Deneyim" id="deneyim-baslik" />
-          <ol className="divide-y divide-line border-y border-line">
-            {experience.map((item) => (
-              <li key={`${item.company}-${item.period}`} className="grid gap-2 py-6 sm:grid-cols-[200px_1fr] sm:gap-8">
-                <p className="font-mono text-sm text-fg-muted">{item.period}</p>
-                <div>
-                  <h3 className="font-semibold text-fg">{item.role}</h3>
-                  <p className="mt-0.5 text-sm text-accent">{item.company}</p>
-                  <ul className="mt-3 max-w-2xl list-disc space-y-1.5 pl-5 leading-relaxed text-fg-muted marker:text-line-strong">
-                    {item.points.map((point) => (
-                      <li key={point}>{point}</li>
-                    ))}
-                  </ul>
-                </div>
-              </li>
-            ))}
-          </ol>
-
-          <div className="mt-10 grid gap-2 sm:grid-cols-[200px_1fr] sm:gap-8">
-            <p className="font-mono text-sm text-fg-muted">Eğitim</p>
-            <div>
-              <h3 className="font-semibold text-fg">{education.degree}</h3>
-              <p className="mt-0.5 text-sm text-accent">
-                {education.school} · {education.period}
-              </p>
-              <p className="mt-3 text-fg-muted">{education.languages}</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="yetenekler" aria-labelledby="yetenekler-baslik" className="scroll-mt-20 py-16">
-          <SectionHeading index="03" title="Yetenekler" id="yetenekler-baslik" />
-          <dl className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
-            {skills.map((skill) => (
-              <div key={skill.group}>
-                <dt className="font-mono text-xs uppercase tracking-wider text-fg-muted">{skill.group}</dt>
-                <dd className="mt-3 flex flex-wrap gap-2">
-                  {skill.items.map((item) => (
-                    <span key={item} className="rounded-md bg-surface px-3 py-1.5 text-sm text-fg ring-1 ring-line">
-                      {item}
-                    </span>
-                  ))}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </section>
-
-        <section id="iletisim" aria-labelledby="iletisim-baslik" className="scroll-mt-20 py-16">
-          <SectionHeading index="04" title="İletişim" id="iletisim-baslik" />
-          <div className="rounded-xl border border-line bg-surface p-8 sm:p-10">
-            <p className="max-w-xl text-2xl font-semibold leading-snug tracking-tight text-fg sm:text-3xl">
-              Yeni bir proje ya da pozisyon için konuşmak isterseniz yazın.
+          <div className="mx-auto flex min-h-[32rem] max-w-6xl flex-col justify-center px-4 py-14 sm:px-6 lg:min-h-[36rem]">
+            <p className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-line bg-page/70 px-3 py-1 text-sm text-ink-soft backdrop-blur">
+              <span aria-hidden className="h-2 w-2 rounded-full bg-mint" />
+              Yeni pozisyonlara açığım · {profile.location}
             </p>
-            <a
-              href={`mailto:${profile.email}`}
-              className="mt-8 inline-flex h-11 items-center gap-2 rounded-md bg-accent px-5 text-sm font-semibold text-on-accent transition-colors duration-200 hover:bg-accent-strong"
-            >
-              <Mail size={16} aria-hidden="true" />
-              {profile.email}
-            </a>
-            <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-1 text-sm text-fg-muted">
-              <li className="inline-flex items-center gap-2">
-                <Phone size={16} aria-hidden="true" />
-                <a href={`tel:${profile.phone.replace(/\s/g, "")}`} className="inline-flex min-h-11 items-center hover:text-fg">
-                  {profile.phone}
-                </a>
-              </li>
-              <li className="inline-flex items-center gap-2">
-                <MapPin size={16} aria-hidden="true" />
-                {profile.location}
-              </li>
-              <li className="inline-flex items-center gap-2">
-                <Linkedin size={16} aria-hidden="true" />
-                <a href={profile.linkedin} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center hover:text-fg">
-                  LinkedIn
-                </a>
-              </li>
-              <li className="inline-flex items-center gap-2">
-                <Github size={16} aria-hidden="true" />
-                <a href={profile.github} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center hover:text-fg">
-                  github.com/ahmetkurtbm
-                </a>
-              </li>
+            <h1 className="font-display text-5xl font-semibold leading-[1.02] tracking-tight sm:text-7xl">
+              {profile.name}
+              <span className="block text-ink-faint">{profile.role}</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">
+              Gerçek kullanıcısı olan web uygulamaları geliştiriyorum: bir eğitim kurumunun veli paneli, öğretmenler için yapay
+              zekâlı soru bankası, restoranlar için sipariş ve stok sistemi.
+            </p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <a href="#projeler" className="rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-deep">
+                Projeleri gör
+              </a>
+              <a href={profile.cv} download className="rounded-lg border border-line bg-page/60 px-5 py-3 text-sm font-medium backdrop-blur transition-colors hover:border-ink-faint">
+                CV indir
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="hakkimda-baslik" id="hakkimda" className="border-t border-line py-20 sm:py-28">
+          <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <SectionHead id="hakkimda-baslik" kicker="Hakkımda" title="Fikirden canlı ürüne kadar" />
+              <p className="-mt-4 max-w-2xl text-lg leading-relaxed text-ink-soft">{profile.summary}</p>
+            </div>
+            <dl className="grid grid-cols-2 gap-px self-end overflow-hidden rounded-2xl border border-line bg-line lg:col-span-5">
+              {[
+                ["8", "canlı demo"],
+                ["1", "gerçek müşteri"],
+                ["2 yıl", "deneyim (staj dahil)"],
+                ["Next.js", "ana yığın"],
+              ].map(([value, label]) => (
+                <div key={label} className="bg-surface p-5">
+                  <dt className="text-sm text-ink-faint">{label}</dt>
+                  <dd className="mt-1 font-display text-3xl font-semibold tracking-tight">{value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+
+        <section aria-labelledby="deneyim-baslik" id="deneyim" className="border-t border-line py-20 sm:py-28">
+          <div className="mx-auto grid max-w-6xl gap-16 px-4 sm:px-6 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <SectionHead id="deneyim-baslik" kicker="Deneyim" title="Çalıştığım yerler" />
+              <ol className="flex flex-col gap-10 border-l border-line pl-6">
+                {experience.map((job) => (
+                  <li key={`${job.company}-${job.period}`} className="relative">
+                    <span aria-hidden className="absolute -left-[1.85rem] top-2 h-2.5 w-2.5 rounded-full border-2 border-page bg-accent" />
+                    <span className="font-mono text-xs text-ink-faint">{job.period}</span>
+                    <h3 className="mt-1 font-display text-lg font-semibold">
+                      {job.role} <span className="font-normal text-ink-soft">· {job.company}</span>
+                    </h3>
+                    <ul className="mt-3 flex flex-col gap-1.5 text-sm leading-relaxed text-ink-soft">
+                      {job.points.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <div className="flex flex-col gap-12 lg:col-span-5">
+              <div>
+                <Kicker>Eğitim</Kicker>
+                <p className="mt-3 font-display text-lg font-semibold">{education.degree}</p>
+                <p className="text-sm text-ink-soft">
+                  {education.school} · {education.period}
+                </p>
+                <p className="mt-2 text-sm text-ink-soft">{education.languages}</p>
+              </div>
+              <div>
+                <Kicker>Yetenekler</Kicker>
+                <dl className="mt-4 flex flex-col gap-5">
+                  {skills.map((group) => (
+                    <div key={group.group}>
+                      <dt className="text-sm font-medium">{group.group}</dt>
+                      <dd className="mt-2 flex flex-wrap gap-1.5">
+                        {group.items.map((item) => (
+                          <span key={item} className="rounded-md border border-line bg-surface px-2 py-1 font-mono text-xs text-ink-soft">
+                            {item}
+                          </span>
+                        ))}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="projeler-baslik" id="projeler" className="border-t border-line py-20 sm:py-28">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <SectionHead id="projeler-baslik" kicker="Projeler" title="Yaptıklarım" />
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {projects.map((project, index) => (
+                <ProjectCard key={project.slug} project={project} index={index} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="iletisim-baslik" id="iletisim" className="border-t border-line py-20 sm:py-28">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <SectionHead id="iletisim-baslik" kicker="İletişim" title="Birlikte çalışalım" />
+            <p className="-mt-6 mb-10 max-w-2xl text-lg leading-relaxed text-ink-soft">
+              Full-stack ya da frontend pozisyonları ve serbest projeler için yazabilirsiniz.
+            </p>
+            <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                { href: `mailto:${profile.email}`, label: "E-posta", value: profile.email, Icon: Mail },
+                { href: `tel:${profile.phone.replace(/\s/g, "")}`, label: "Telefon", value: profile.phone, Icon: Phone },
+                { href: profile.linkedin, label: "LinkedIn", value: "ahmet-kurt-bm", Icon: Linkedin },
+                { href: profile.github, label: "GitHub", value: "ahmetkurtbm", Icon: Github },
+              ].map(({ href, label, value, Icon }) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel={href.startsWith("http") ? "noreferrer" : undefined}
+                    className="flex h-full items-center gap-3 rounded-xl border border-line bg-surface p-4 transition-colors hover:border-accent/60"
+                  >
+                    <Icon size={18} aria-hidden className="shrink-0 text-accent" />
+                    <span className="min-w-0">
+                      <span className="block text-xs text-ink-faint">{label}</span>
+                      <span className="block truncate text-sm font-medium">{value}</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </section>
       </main>
-
-      <footer className="mx-auto mt-8 max-w-5xl px-4 sm:px-6">
-        <div className="flex flex-col gap-2 border-t border-line py-6 text-sm text-fg-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {year} {profile.name}
-          </p>
-          <a href="#" className="inline-flex min-h-11 items-center hover:text-fg">
-            Başa dön ↑
-          </a>
+      <footer className="border-t border-line py-8">
+        <div className="mx-auto flex max-w-6xl flex-wrap justify-between gap-2 px-4 font-mono text-xs text-ink-faint sm:px-6">
+          <span>© {new Date().getFullYear()} {profile.name}</span>
+          <span>Arkadaki simit: donut.c, tarayıcıda gerçek zamanlı 3B</span>
         </div>
       </footer>
     </>

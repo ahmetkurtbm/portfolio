@@ -12,77 +12,146 @@ export const profile = {
 };
 
 export type Project = {
+  slug: string;
   title: string;
   category: string;
-  description: string;
+  /** Tek cümle: kimin hangi sorununu çözüyor. */
+  problem: string;
+  /** Yapılan işin somut, ölçülebilir parçaları. */
+  highlights: string[];
   tags: string[];
+  /** public/projects altındaki ekran görüntüsü. */
+  image: string;
   demo: string | null;
   source: string;
+  /** Kartın üstünde vurgulanan durum etiketi. */
+  badge?: string;
 };
 
 export const projects: Project[] = [
   {
-    title: "GastroFlow",
-    category: "Restoran yönetim sistemi",
-    description:
-      "Çok kiracılı ve rol bazlı restoran yönetimi: QR menüden sipariş, offline çalışabilen POS, mutfak ekranı, reçeteye göre stok düşümü ve satın alma. Erişim kontrolü veritabanında Row Level Security ile zorunlu.",
-    tags: ["Next.js", "PostgreSQL", "RLS", "Docker", "PWA"],
-    demo: "https://gastroflow-pied.vercel.app/",
-    source: "https://github.com/ahmetkurtbm/gastroflow",
+    slug: "kidsacademy",
+    title: "Kids Academy",
+    category: "Eğitim kurumu portalı",
+    problem:
+      "Bir eğitim kurumunun deneme sonuçlarını velilere tek tek mesajla göndermek yerine, her velinin kendi panelinden takip etmesini sağlıyor.",
+    highlights: [
+      "Sınıfın tamamı için tek ekranda deneme girişi; boş ve net otomatik hesaplanır",
+      "Veliye özel panel, gelişim grafiği ve WhatsApp bildirimi",
+      "Kurum sahibi ve personel rolleriyle kişisel yönetici hesapları, KVKK metni, şifreli aylık yedek",
+    ],
+    tags: ["Next.js", "TypeScript", "Supabase", "Vitest"],
+    image: "/projects/kidsacademy.png",
+    demo: "https://kids-academy-phi.vercel.app/",
+    source: "https://github.com/ahmetkurtbm/kidsacademy",
+    badge: "Gerçek bir kurumda kullanılıyor",
   },
   {
+    slug: "questiontotest",
+    title: "QuestionToTest",
+    category: "Yapay zekâ ile soru bankası",
+    problem:
+      "Öğretmenlerin PDF'lerden soru kesip yaprak test hazırlamasını üç adıma indiriyor: PDF'i aç, soruları yapay zekâya buldur, kontrol edip kaydet.",
+    highlights: [
+      "Gemini sayfadaki soruları bulur, kırpar; konu, zorluk ve cevap önerir",
+      "Konu ve zorluk karışımıyla, cevap anahtarı ve çözümleri içeren test PDF'i",
+      "Vercel'de veritabanısız demo (PGlite), yerelde PostgreSQL",
+    ],
+    tags: ["Next.js", "Gemini", "PostgreSQL", "react-pdf"],
+    image: "/projects/questiontotest.png",
+    demo: "https://questiontotest.vercel.app/",
+    source: "https://github.com/ahmetkurtbm/questiontotest",
+    badge: "Yapay zekâ",
+  },
+  {
+    slug: "testmetrix",
     title: "TestMetrix",
     category: "Sınav madde analizi",
-    description:
-      "Öğretmenler için Excel'den yüklenen cevaplarla madde güçlüğü, ayırt edicilik, KR-20/KR-21 güvenirlik ve çeldirici analizi yapan; Excel ve PDF rapor üreten uygulama.",
+    problem:
+      "Öğretmenlerin hangi sorunun işe yaramadığını, cevap anahtarında hata olup olmadığını ve çeldiricilerin çalışıp çalışmadığını görmesini sağlıyor.",
+    highlights: [
+      "Güçlük, ayırt edicilik, KR-20/KR-21 güvenirlik ve çeldirici analizi",
+      "Sorunlu maddeleri önem sırasıyla gösteren rapor ve madde haritası",
+      "Excel ve grafikli PDF raporları; 2025'ten beri geliştiriliyor",
+    ],
     tags: ["Next.js", "Prisma", "PostgreSQL", "Auth.js"],
+    image: "/projects/testmetrix.png",
     demo: "https://testmetrix.vercel.app/",
     source: "https://github.com/ahmetkurtbm/testmetrix",
   },
   {
-    title: "ReceiptFlow",
-    category: "Fiş ve fatura okuma",
-    description:
-      "Fiş ve fatura görsellerini yapay zekâ ile okuyup alanları düzenlenebilir hâle getiren ve kayıtları tek yerde toplayan finans asistanı.",
-    tags: ["Next.js", "AI", "OCR", "PostgreSQL"],
-    demo: "https://receiptflow-eta.vercel.app/",
-    source: "https://github.com/ahmetkurtbm/receiptflow",
+    slug: "gastroflow",
+    title: "GastroFlow",
+    category: "Restoran yönetim sistemi",
+    problem:
+      "Sipariş, mutfak, kasa ve stok için ayrı araçlar kullanan restoranları tek sisteme topluyor; her satış reçeteye göre stoktan düşüyor.",
+    highlights: [
+      "Çok kiracılı yapı; kiracı izolasyonu PostgreSQL Row Level Security ile veritabanında",
+      "QR menü, POS, mutfak ekranı, kasa, satın alma ve denetim kaydı",
+      "Bağlantı kopsa da sipariş kaybolmayan offline kuyruk, PWA",
+    ],
+    tags: ["Next.js", "PostgreSQL", "RLS", "PGlite", "Playwright"],
+    image: "/projects/gastroflow.png",
+    demo: "https://gastroflow-pied.vercel.app/",
+    source: "https://github.com/ahmetkurtbm/gastroflow",
   },
   {
-    title: "GateHub",
-    category: "Merkezi kimlik doğrulama (SSO)",
-    description:
-      "Birden fazla uygulama için ortak giriş, OAuth istemci yönetimi, onay ekranı ve güvenli oturum akışı sunan SSO platformu.",
-    tags: ["Next.js", "OAuth 2.1", "OpenID Connect"],
-    demo: "https://gatehub-orcin.vercel.app/",
-    source: "https://github.com/ahmetkurtbm/gatehub",
-  },
-  {
+    slug: "diyetgo",
     title: "Diyetgo",
     category: "Diyetisyen paneli",
-    description:
-      "Danışan, ölçüm, besin, beslenme planı, randevu ve hedef yönetimi. Demo tarayıcıda çalışır; yerelde Express ve PostgreSQL API'siyle aynı arayüz kullanılır.",
-    tags: ["React", "TypeScript", "Express", "PostgreSQL"],
+    problem:
+      "Diyetisyenlerin danışan, ölçüm, beslenme planı ve randevularını tek yerde yönetmesini; plan yazarken kaloriyi canlı görmesini sağlıyor.",
+    highlights: [
+      "Serbest metinden (\"8 yemek kaşığı pilav\") besin ve gram çıkarımı",
+      "Aynı test senaryoları tarayıcı demosuna ve gerçek API'ye karşı çalışır",
+      "Telefona kurulabilen PWA, çevrimdışı açılış",
+    ],
+    tags: ["React", "Express", "PostgreSQL", "Drizzle"],
+    image: "/projects/diyetgo.png",
     demo: "https://diyetgo-kappa.vercel.app/",
     source: "https://github.com/ahmetkurtbm/diyetgo",
   },
   {
-    title: "Question to Test",
-    category: "Soru bankası ve test üretimi",
-    description:
-      "Fotoğraf ve PDF'ten soru bankası oluşturup istenen konu ve zorluk karışımında test PDF'i üreten uygulama. Girişler GateHub SSO ile korunur.",
-    tags: ["Next.js", "NextAuth", "PostgreSQL", "Vercel Blob"],
-    demo: "https://tahsinaslanf.vercel.app/",
-    source: "https://github.com/ahmetkurtbm/questiontotest",
+    slug: "receiptflow",
+    title: "ReceiptFlow",
+    category: "Fiş ve fatura okuma",
+    problem: "Fiş ve faturaları yapay zekâyla okuyup muhasebe alanlarına ayırıyor; hesap açmadan tarayıcıda çalışıyor.",
+    highlights: [
+      "Belgeye göre dinamik alanlar: KDV kırılımı, ürün satırları, masraf türü",
+      "Toplu yükleme, düzenlenebilir sonuçlar, JSON dışa aktarma",
+    ],
+    tags: ["Next.js", "Gemini", "TypeScript"],
+    image: "/projects/receiptflow.png",
+    demo: "https://receiptflow-ahmetkurt.vercel.app/",
+    source: "https://github.com/ahmetkurtbm/receiptflow",
   },
   {
-    title: "Kids Academy",
-    category: "Eğitim kurumu portalı",
-    description:
-      "Yönetim panelinden duyuru, etkinlik ve sınav yönetimi; velilerin çocuklarının sınav sonuçlarını takip ettiği veli portalı.",
-    tags: ["Next.js", "Supabase", "PostgreSQL"],
-    demo: "https://kids-academy-phi.vercel.app/",
-    source: "https://github.com/ahmetkurtbm/kidsacademy",
+    slug: "gatehub",
+    title: "GateHub",
+    category: "Merkezi kimlik doğrulama (SSO)",
+    problem: "Birden fazla uygulamaya tek hesapla giriş sağlayan OAuth 2.1 / OpenID Connect sağlayıcısı.",
+    highlights: [
+      "OAuth istemci yönetimi, onay ekranı, iki adımlı doğrulama, oturum yönetimi",
+      "ORM yerine düz SQL; demo modunda tarayıcı içi Postgres",
+    ],
+    tags: ["Next.js", "better-auth", "OIDC", "PostgreSQL"],
+    image: "/projects/gatehub.png",
+    demo: "https://gatehub-ahmetkurt.vercel.app/",
+    source: "https://github.com/ahmetkurtbm/gatehub",
+  },
+  {
+    slug: "controlpanel",
+    title: "ControlPanel",
+    category: "Gözlemlenebilirlik paneli",
+    problem: "Tüm Vercel projelerinin istek, hata, gecikme, log ve trace verisini tek ekranda gösteriyor; girişi GateHub ile.",
+    highlights: [
+      "Grafana Cloud (Prometheus, Loki, Tempo) verisi kendi arayüzünde",
+      "Eşik tabanlı uyarılar, trace şelalesi, özelleştirilebilir panolar",
+    ],
+    tags: ["Next.js", "OpenTelemetry", "Grafana", "Recharts"],
+    image: "/projects/controlpanel.png",
+    demo: "https://controlpanel-phi-ten.vercel.app/",
+    source: "https://github.com/ahmetkurtbm/controlpanel",
   },
 ];
 

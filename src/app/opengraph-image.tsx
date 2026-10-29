@@ -15,17 +15,21 @@ export default function OpengraphImage() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
+          justifyContent: "space-between",
           padding: "80px",
-          background: "#0b1120",
-          color: "#f1f5f9",
+          background: "#100f0d",
+          color: "#f3ede3",
+          fontFamily: "sans-serif",
         }}
       >
-        <div style={{ fontSize: 32, color: "#34d399" }}>{profile.role}</div>
-        <div style={{ fontSize: 96, fontWeight: 700, marginTop: 16 }}>{profile.name}</div>
-        <div style={{ fontSize: 34, color: "#a3b1c6", marginTop: 28 }}>
-          Next.js · TypeScript · PostgreSQL
+        <div style={{ display: "flex", fontSize: 30, color: "#ff8a3d" }}>{profile.role}</div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+          <div style={{ display: "flex", fontSize: 84, fontWeight: 700, letterSpacing: -2 }}>{profile.name}</div>
+          <div style={{ display: "flex", fontSize: 38, color: "#bcb3a4", maxWidth: 900 }}>
+            Gerçek kullanıcısı olan web uygulamaları geliştiriyorum.
+          </div>
         </div>
+        <div style={{ display: "flex", fontSize: 26, color: "#8a8174" }}>Next.js · TypeScript · PostgreSQL</div>
       </div>
     ),
     size,
