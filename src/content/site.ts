@@ -153,6 +153,23 @@ export const projects: Project[] = [
     demo: "https://controlpanel-phi-ten.vercel.app/",
     source: "https://github.com/ahmetkurtbm/controlpanel",
   },
+  {
+    slug: "pomodoro-odak",
+    title: "Pomodoro Odak",
+    category: "Akıllı saat uygulaması",
+    problem:
+      "Huawei Watch GT 6'da telefona bakmadan odak turları ve molalarla çalışmayı sağlıyor; tur bitince titrer, ilerlemeyi saatte tutar.",
+    highlights: [
+      "HarmonyOS lite wearable: 1 MB bellek, regex'siz ES5 ve hazır bileşenlerle arayüz",
+      "Ekran kararınca ve uygulama kapanınca da süren, duvar saatine dayalı zamanlayıcı; 7 günlük istatistik",
+      "Saatin canvas bellek sızıntısını teşhis uygulamalarıyla bulup hologramı önceden çizilmiş karelere taşıma; 27 test, CI",
+    ],
+    tags: ["HarmonyOS", "JavaScript", "DevEco Studio", "node:test"],
+    image: "/projects/pomodoro-odak.png",
+    demo: null,
+    source: "https://github.com/ahmetkurtbm/pomodoro-odak",
+    badge: "Saatimde kullanılıyor",
+  },
 ];
 
 export const experience = [
