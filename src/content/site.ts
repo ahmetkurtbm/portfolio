@@ -30,7 +30,7 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "pusula-aktivite-merkezi",
+    slug: "pusulaaktivitemerkezi",
     title: "Pusula Aktivite Merkezi",
     category: "Eğitim kurumu portalı",
     problem:
@@ -41,9 +41,9 @@ export const projects: Project[] = [
       "Kurum sahibi ve personel rolleriyle kişisel yönetici hesapları, KVKK metni, şifreli aylık yedek",
     ],
     tags: ["Next.js", "TypeScript", "Supabase", "Vitest"],
-    image: "/projects/pusula-aktivite-merkezi.png",
-    demo: "https://kids-academy-phi.vercel.app/",
-    source: "https://github.com/ahmetkurtbm/pusula-aktivite-merkezi",
+    image: "/projects/pusulaaktivitemerkezi.png",
+    demo: "https://pusulaaktivitemerkezi.vercel.app/",
+    source: "https://github.com/ahmetkurtbm/pusulaaktivitemerkezi",
     badge: "Gerçek bir kurumda kullanılıyor",
   },
   {
