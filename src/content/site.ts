@@ -78,6 +78,7 @@ export const projects: Project[] = [
     image: "/projects/testmetrix.png",
     demo: "https://testmetrix.vercel.app/",
     source: "https://github.com/ahmetkurtbm/testmetrix",
+    badge: "TÜBİTAK projesi kapsamında geliştirildi",
   },
   {
     slug: "gastroflow",
