@@ -1,7 +1,7 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { profile, projects } from "@/content/site";
+import { contributions, profile, projects } from "@/content/site";
 
 const inPublic = (path: string) => join(process.cwd(), "public", path);
 
@@ -23,5 +23,13 @@ describe("proje içeriği", () => {
 describe("profil", () => {
   it("CV dosyası sitede var", () => {
     expect(existsSync(inPublic(profile.cv))).toBe(true);
+  });
+});
+
+describe("açık kaynak katkıları", () => {
+  it.each(contributions.map((item) => [item.title, item] as const))("%s kaydı eksiksiz", (_title, item) => {
+    expect(item.url).toMatch(/^https:\/\/github\.com\/[\w.-]+\/[\w.-]+\/(pull|issues)\/\d+$/);
+    expect(item.repo).toMatch(/^[\w.-]+\/[\w.-]+$/);
+    expect(item.summary.length).toBeGreaterThan(0);
   });
 });

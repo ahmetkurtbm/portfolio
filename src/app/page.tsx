@@ -3,7 +3,7 @@ import { ArrowUpRight, Github, Linkedin, Mail, Phone } from "lucide-react";
 
 import { AsciiDonut } from "@/components/ascii-donut";
 import { SiteHeader } from "@/components/site-header";
-import { education, experience, profile, projects, skills, type Project } from "@/content/site";
+import { contributions, education, experience, profile, projects, skills, type Project } from "@/content/site";
 
 function Kicker({ children }: { children: React.ReactNode }) {
   return <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">{children}</span>;
@@ -169,6 +169,28 @@ export default function Home() {
                 <ProjectCard key={project.slug} project={project} index={index} />
               ))}
             </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="katki-baslik" id="acik-kaynak" className="border-t border-line py-20 sm:py-28">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <SectionHead id="katki-baslik" kicker="Açık kaynak" title="Katkılarım" />
+            <ul className="grid gap-5 sm:grid-cols-2">
+              {contributions.map((item) => (
+                <li key={item.url} className="flex flex-col gap-3 rounded-2xl border border-line bg-surface p-6">
+                  <p className="font-mono text-xs uppercase tracking-[0.15em] text-accent">{item.repo}</p>
+                  <h3 className="font-display text-lg font-semibold leading-snug">{item.title}</h3>
+                  <p className="text-sm text-ink-soft">{item.about}</p>
+                  <p className="text-sm leading-relaxed">{item.summary}</p>
+                  <div className="mt-auto flex items-center justify-between gap-3 pt-2 text-sm">
+                    <span className="text-mint">{item.status}</span>
+                    <a href={item.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 underline-offset-4 hover:underline">
+                      Pull request <ArrowUpRight aria-hidden size={14} />
+                    </a>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

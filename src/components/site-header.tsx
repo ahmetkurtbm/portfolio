@@ -6,6 +6,7 @@ const NAV = [
   { href: "#hakkimda", label: "Hakkımda" },
   { href: "#deneyim", label: "Deneyim" },
   { href: "#projeler", label: "Projeler" },
+  { href: "#acik-kaynak", label: "Açık kaynak" },
   { href: "#iletisim", label: "İletişim" },
 ];
 

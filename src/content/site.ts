@@ -173,6 +173,30 @@ export const projects: Project[] = [
   },
 ];
 
+export type Contribution = {
+  repo: string;
+  /** Projenin ne olduğu, tek cümle. */
+  about: string;
+  title: string;
+  /** Yaptığım değişiklik ve etkisi. */
+  summary: string;
+  url: string;
+  status: "Birleşti" | "Onaylandı, birleşme bekliyor" | "İncelemede";
+};
+
+/** Başkalarının açık kaynak projelerine yaptığım katkılar. */
+export const contributions: Contribution[] = [
+  {
+    repo: "OWASP/cve-lite-cli",
+    about: "JavaScript ve TypeScript bağımlılık zafiyetlerini tarayan OWASP Lab projesi.",
+    title: "Windows'ta testlerin kullanıcı ayarlarını bozması düzeltildi (#1670)",
+    summary:
+      "Testler ev klasörünü yalnızca HOME ile yönlendiriyordu; Windows USERPROFILE okuduğu için gerçek ayar dosyasına bozuk bir değer yazılıyor ve yüzlerce test zincirleme düşüyordu. Düzeltmeyle Windows'ta başarısız test sayısı 205'ten 39'a indi.",
+    url: "https://github.com/OWASP/cve-lite-cli/pull/1670",
+    status: "Onaylandı, birleşme bekliyor",
+  },
+];
+
 export const experience = [
   {
     period: "Nis 2025 — Tem 2026",
