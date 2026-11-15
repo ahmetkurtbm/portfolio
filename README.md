@@ -15,4 +15,4 @@ npm run dev   # http://localhost:3000
 
 ## Projeler
 
-Site içeriği (profil, projeler, deneyim, yetenekler) tek dosyada: `src/content/site.ts`. Projeler [GitHub profilimdeki](https://github.com/ahmetkurtbm) public depolar ve canlı demolarıdır: GastroFlow, TestMetrix, ReceiptFlow, GateHub, Diyetgo, Question to Test, Kids Academy.
+Site içeriği (profil, projeler, deneyim, yetenekler) tek dosyada: `src/content/site.ts`. Projeler [GitHub profilimdeki](https://github.com/ahmetkurtbm) public depolar ve canlı demolarıdır: GastroFlow, TestMetrix, ReceiptFlow, GateHub, Diyetgo, Question to Test, Pusula Aktivite Merkezi.
