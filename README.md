@@ -19,4 +19,4 @@ Site içeriği (profil, projeler, deneyim, yetenekler) tek dosyada: `src/content
 
 ## Açık kaynak katkıları
 
-Başkalarının projelerine yaptığım katkılar sitede "Açık kaynak" bölümünde, veri olarak `src/content/site.ts` içindeki `contributions` listesinde durur. Şu an: [OWASP/cve-lite-cli#1670](https://github.com/OWASP/cve-lite-cli/pull/1670) (Windows'ta testlerin kullanıcı ayarlarını bozması düzeltildi; onaylandı, birleşme bekliyor).
+Başkalarının projelerine yaptığım katkılar sitede "Açık kaynak" bölümünde, veri olarak `src/content/site.ts` içindeki `contributions` listesinde durur. Şu an: [OWASP/cve-lite-cli#1670](https://github.com/OWASP/cve-lite-cli/pull/1670) (Windows'ta testlerin kullanıcı ayarlarını bozması düzeltildi; birleşti).

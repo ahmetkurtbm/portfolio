@@ -193,7 +193,7 @@ export const contributions: Contribution[] = [
     summary:
       "Testler ev klasörünü yalnızca HOME ile yönlendiriyordu; Windows USERPROFILE okuduğu için gerçek ayar dosyasına bozuk bir değer yazılıyor ve yüzlerce test zincirleme düşüyordu. Düzeltmeyle Windows'ta başarısız test sayısı 205'ten 39'a indi.",
     url: "https://github.com/OWASP/cve-lite-cli/pull/1670",
-    status: "Onaylandı, birleşme bekliyor",
+    status: "Birleşti",
   },
 ];
 
