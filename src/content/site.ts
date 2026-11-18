@@ -195,6 +195,15 @@ export const contributions: Contribution[] = [
     url: "https://github.com/OWASP/cve-lite-cli/pull/1670",
     status: "Birleşti",
   },
+  {
+    repo: "OWASP/cve-lite-cli",
+    about: "JavaScript ve TypeScript bağımlılık zafiyetlerini tarayan OWASP Lab projesi.",
+    title: "Çok klasörlü tarama testleri Windows'ta geçer hale getirildi (#1689)",
+    summary:
+      "Testler beklenen klasör yollarını POSIX biçiminde sabit yazmıştı; Windows'ta yollar ters eğik çizgiyle üretildiği için 7 test, kod doğru olduğu hâlde düşüyordu. Beklenen yollar path.join ile kuruldu, kaynak koda dokunulmadı.",
+    url: "https://github.com/OWASP/cve-lite-cli/pull/1689",
+    status: "Birleşti",
+  },
 ];
 
 export const experience = [
